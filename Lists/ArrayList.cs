@@ -159,9 +159,33 @@
         }
 
 
+        public int GetValueIndex (int index)
+        {
+            int[] newArray = new int[Length];
+            newArray = _array;
+            newArray[index] = newArray[index];
+
+            return newArray[index];
+
+        }
 
 
+        public int FindeIndexByValue(int value)
+        {
+            int result = -1;
+            
+            for(int i=0; i<Length; i++)
+            {
+                if(value== _array[i])
+                {
+                    result= i;
 
+                break;
+                }
+            }
+
+         return result;
+        }
 
 
 

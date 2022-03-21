@@ -15,8 +15,22 @@ list.AddValuesToTheEnd(4);
 list.Write();
 list.AddValuesToTheEnd(5);
 list.Write();
-
-
-list.DeleteByIndexNElemets(0,6);
+list.AddValuesToTheEnd(5);
+list.Write();
+list.AddValuesToTheEnd(6);
+list.Write();
+list.AddValuesToTheEnd(5);
+list.Write();
+list.AddValuesToTheEnd(5);
+list.Write();
+list.AddValuesToTheEnd(6);
+list.Write();
+list.AddValuesToTheEnd(5);
 list.Write();
 
+list.FindeIndexByValue(5);
+list.Write();
+
+
+
+Console.WriteLine(list.FindeIndexByValue(22));
