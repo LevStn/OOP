@@ -8,7 +8,7 @@
 
         public ArrayList()
         {
-            _array = new int[3];
+            _array = new int[10];
             Length = 0;
 
         }
@@ -62,7 +62,11 @@
 
         public void DeleteLast()
         {
-            Length--;
+            if (Length > 0)
+            {
+                Length--;
+            }
+           
         }
 
         public void DeleteBegin()
@@ -80,9 +84,80 @@
 
         }
 
-        
 
-        
+        public void DeleteByIndex(int index)
+        {
+            if(index<Length && index>=0)
+            {
+                int[] newArray = new int[Length];
+                newArray = _array;
+
+               for(int i = index; i<Length-1; i++)
+                {
+                    newArray[i]=_array[i+1];
+                }
+
+                _array= newArray;
+
+                Length--;
+
+            }
+
+        }
+       public void DeleteTHeEndNElements (int number )
+       {
+            if (number>0 && number<=Length)
+            {                            
+                Length= Length-number;
+            }
+       }
+
+
+
+        public void DeleteTHeBegineNElements(int number)
+        {
+            if (number>Length || number<0)
+            {
+                throw new Exception("number can`t > Length and < 0");
+            }
+
+            int [] newArray = new int[Length];
+            newArray = _array;
+
+            for( int i = 0; i<= Length- number; i++)
+            {
+                newArray[i] = _array[i+ number];
+
+
+            }
+
+           
+            _array = newArray;
+            Length= Length-number;
+            
+
+        }
+
+
+        public void DeleteByIndexNElemets(int index, int number)
+        {
+            if(number<0 || number>Length || index<0 || index>Length)
+            {
+                throw new Exception("nubmer and index can`t <0 and > Length");
+            } 
+
+            int [] newArray = new int [Length];
+            newArray = _array;
+
+            for(int i=index; i<=Length-number; i++)
+            {
+                newArray[i] = _array[i + number];
+            }
+
+            _array = newArray;
+            Length = Length - number;
+        }
+
 
 
 
@@ -121,6 +196,21 @@
             _array = newArray;
 
         }
+
+        private void DownSize()
+        {
+            int newLength=_array.Length;
+            int[] newArray = new int[newLength];
+
+            for ( int i = 0; i < _array.Length; i++)
+            {
+                newArray[i]= _array[i];
+            }
+
+            _array= newArray;
+        }
+
+
         public void Write()
         {
             Console.Write($"L={Length} RL{_array.Length}   ");
