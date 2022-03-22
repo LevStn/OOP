@@ -325,17 +325,35 @@
         public int DeleteByValueFirst(int value)
         {
             int index = -1;
-            for (int i = 0; i < Length-1; i ++)
+            for (int i = 0; i < Length; i ++)
                 if(value == _array[i])
                 {
                     index = i;
 
+                    DeleteByIndex(index);
                     break;
                 }
 
-                    
-
             return index;
+
+        }
+
+        public int DeleteByValueAll(int value)
+        {
+            int index = -1;
+            int count =0;
+            for (int i = 0; i < Length; i++)
+                if (value == _array[i])
+                {
+                    count++;
+                    index = i;
+
+                    DeleteByIndex(index);
+                    
+                }
+
+            return count;
+
         }
 
 

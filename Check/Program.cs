@@ -19,12 +19,14 @@ list.AddValuesToTheEnd(2);
 list.Write();
 list.AddValuesToTheEnd(5);
 list.Write();
+list.AddValuesToTheEnd(2);
+list.Write();
 
-list.DeleteByValueFirst(2);
+int  a= list.DeleteByValueAll(10);
 list.Write();
 
 
 
-Console.WriteLine(list.DeleteByValueFirst(2));
-
+Console.WriteLine(a);
+//Console.WriteLine(list.DeleteByValueAll(2));
 
