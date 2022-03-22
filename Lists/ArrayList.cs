@@ -34,13 +34,7 @@
 
         public void AddValuesToTheBegin(int value)
         {
-            if (Length >= _array.Length)
-            {
-
-                UpSize();
-
-            }
-
+           
             InsertOne(0);
             _array[0] = value;
             Length++;
@@ -48,17 +42,39 @@
         }
 
 
-       /* public void AddValuesToIndex(int value, int index)
+       public void AddValuesToIndex(int value, int index)
         {
+            if(index > Length+1 || index <0)
+            {
+                throw new Exception("index can`t > Length and < 0");
+            }
+
+            if (index == Length + 1)
+            {
+                AddValuesToTheEnd(value);
+            }
+            else
+            {
+                int newLenght = (int)(_array.Length * 1.5d + 1);
+                int[] newArray = new int[newLenght];
 
 
-         int newLenght = (int)(_array.Length * 1.5d + 1);
-         int[] newArray = new int[newLenght];
+                for (int i = 0; i < Length; i++)
+                {
+                    newArray[i] = _array[i];
+                }
+                for (int i = index; i < Length; i++)
+                {
+                    newArray[i + 1] = _array[i];
+                }
 
+                newArray[index] = value;
+                _array = newArray;
 
+                Length++;
+            }
 
-
-        }*/
+        }
 
         public void DeleteLast()
         {
@@ -188,9 +204,139 @@
         }
 
 
+        public void ChangesByIndex(int index, int value)
+        {
+            if(index<0 || index>=Length)
+            {
+                throw new Exception("index can`t < 0 and > Length ");
+            }
+
+            _array[index] = value;
+        }
+
+        public void Reverse()
+        {
+
+           for (int i = 0; i < Length / 2; i++)
+           {
+               int tmp = _array[i];
+               _array[i] = _array[Length - (1 + i)];
+               _array[Length - (1 + i)] = tmp;
+           }
+    
+        }
+
+        public int FindeMaxElement()
+        {
+            int maxValue = _array.Length;
+            for (int i=0; i < Length; i++)
+            {
+                if( _array[i] > maxValue)
+                {
+                    maxValue = _array[i];
+                }
+                   
+            }    
+            return maxValue;
+        }
 
 
+        public int FindeMinElevent()
+        {
+            int minValue = _array.Length;
+            for (int i=0; i< Length; i++)
+            {
+                if (_array[i] < minValue)
+                {
+                    minValue = _array[i];
+                }
 
+            }
+
+            return minValue;
+        }
+            
+
+        public int FindeIndexMaxElement()
+        {
+           int indexMax = FindeMaxElement();
+           
+           for(int i=0; i< Length; i++)
+
+               if(_array[i]==indexMax)
+                {
+                    indexMax = i;
+                    
+                }    
+
+            return indexMax;
+
+        }
+
+        public int FindeIndexMinElement()
+        {
+            int indexMin=FindeMinElevent();
+
+            for( int i=0; i< Length; i++)
+                if( _array[i]==indexMin)
+                {
+                    indexMin = i;
+                }
+
+            return indexMin;
+        }
+        
+        public void GetSortAscending()
+        {
+            int tmp;
+            for (int j = 0; j < Length; j++)
+            {
+                for (int i = 0; i < Length - 1; i++)
+                {
+                    if (_array[i] > _array[i + 1])
+                    {
+                        tmp = _array[i + 1];
+                        _array[i + 1] = _array[i];
+                        _array[i] = tmp;
+                    }
+                }
+            }
+        }
+
+        
+        public void GetDecendingSort()
+        {
+            int tmp;
+            for (int j = 0; j < Length; j++)
+            {
+                for (int i = 0; i < Length - 1; i++)
+                {
+                    if (_array[i] < _array[i + 1])
+                    {
+                        tmp = _array[i + 1];
+                        _array[i + 1] = _array[i];
+                        _array[i] = tmp;
+                    }
+                }  
+            }
+        }
+
+
+        public int DeleteByValueFirst(int value)
+        {
+            int index = -1;
+            for (int i = 0; i < Length-1; i ++)
+                if(value == _array[i])
+                {
+                    index = i;
+
+                    break;
+                }
+
+                    
+
+            return index;
+        }
 
 
 

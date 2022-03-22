@@ -13,24 +13,18 @@ list.AddValuesToTheEnd(3);
 list.Write();
 list.AddValuesToTheEnd(4);
 list.Write();
-list.AddValuesToTheEnd(5);
+list.AddValuesToTheEnd(0);
 list.Write();
-list.AddValuesToTheEnd(5);
-list.Write();
-list.AddValuesToTheEnd(6);
-list.Write();
-list.AddValuesToTheEnd(5);
-list.Write();
-list.AddValuesToTheEnd(5);
-list.Write();
-list.AddValuesToTheEnd(6);
+list.AddValuesToTheEnd(2);
 list.Write();
 list.AddValuesToTheEnd(5);
 list.Write();
 
-list.FindeIndexByValue(5);
+list.DeleteByValueFirst(2);
 list.Write();
 
 
 
-Console.WriteLine(list.FindeIndexByValue(22));
+Console.WriteLine(list.DeleteByValueFirst(2));
+
+
