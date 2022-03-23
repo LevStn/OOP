@@ -1,26 +1,13 @@
-using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Collections;
 
-
-namespace Lists.Tests
+namespace Lists.Tests.ArrayListsTestSources
 {
-    public class Tests
-    {
-       
-        [TestCaseSource(typeof(DeleteByValueAllTestsSourse))]
-        public void DeleteByValueAllTests(int value, ArrayList list, ArrayList expectedList,int expectedNumbers)
-        {
-
-
-            int actualNumber = list.DeleteByValueAll(value);
-
-            ArrayList actualList = list;
-
-            Assert.AreEqual(actualNumber, actualNumber);
-            Assert.AreEqual(expectedList, actualList);
-        }
-    }
-    public class DeleteByValueAllTestsSourse : IEnumerable
+    public class DeleteByValueAllTests : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
@@ -61,8 +48,8 @@ namespace Lists.Tests
 
 
             value = 0;
-            list = new ArrayList(new int[] {  });
-            expectedList = new ArrayList(new int[] {  });
+            list = new ArrayList(new int[] { });
+            expectedList = new ArrayList(new int[] { });
             expectedNumbers = 3;
 
             yield return new object[] { value, list, expectedList, expectedNumbers };
@@ -76,7 +63,7 @@ namespace Lists.Tests
 
             yield return new object[] { value, list, expectedList, expectedNumbers };
         }
-    }  
+    }
 }
 
 

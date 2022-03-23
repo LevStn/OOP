@@ -74,11 +74,22 @@ namespace Lists
 
         public void AddValuesToTheBegin(int value)
         {
-           
-            InsertOne(0);
-            _array[0] = value;
+
+
+            int newLenght = (int)(_array.Length * 1.5d);
+            int[] newArray = new int[newLenght];
+
             Length++;
 
+            for (int i = 0; i < Length-1; i++)
+            {
+                newArray[i+1] = _array[i];
+                
+            }
+            _array= newArray;   
+
+
+            _array[0] = value;
         }
 
 
