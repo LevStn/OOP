@@ -5,28 +5,18 @@
 
 ArrayList list=new ArrayList();
 
-list.AddValuesToTheEnd(1);
-list.Write();
-list.AddValuesToTheEnd(2);
-list.Write();
 list.AddValuesToTheEnd(3);
-list.Write();
-list.AddValuesToTheEnd(4);
-list.Write();
-list.AddValuesToTheEnd(0);
-list.Write();
-list.AddValuesToTheEnd(2);
-list.Write();
-list.AddValuesToTheEnd(5);
-list.Write();
-list.AddValuesToTheEnd(2);
-list.Write();
 
-int  a= list.DeleteByValueAll(10);
+for(int i=0; i<5; i++)
+{
+    list.AddValuesToTheEnd(5);
+
+}
+list.AddValuesToTheEnd(65);
+
 list.Write();
 
 
-
-Console.WriteLine(a);
-//Console.WriteLine(list.DeleteByValueAll(2));
+list.DeleteByValueAll(3);
+list.Write();
 
