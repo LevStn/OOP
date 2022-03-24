@@ -1,15 +1,16 @@
-﻿using System.Collections;
+﻿using NUnit.Framework;
+using System.Collections;
 
 namespace Lists.Tests.ArrayListsTestSources
 {
-    internal class AddValuesToTheBeginTestsSource
+    public class AddValuesToTheBeginTestsSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
 
             int value = 3;
             ArrayList list = new ArrayList(new int[] { 3, 1, 2, 3, 4, 5 });
-            ArrayList expected = new ArrayList(new int[] { 1, 2, 3, 4, 5 });
+            ArrayList expected = new ArrayList(new int[] {3, 3, 1, 2, 3, 4, 5 });
 
             yield return new object[] { value, list, expected };
 

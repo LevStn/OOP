@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NUnit.Framework;
 using System.Collections;
 
 namespace Lists.Tests.ArrayListsTestSources
@@ -32,7 +28,7 @@ namespace Lists.Tests.ArrayListsTestSources
             value = 0;
             list = new ArrayList(new int[] { 1, 2, 2, 2, 5 });
             expectedList = new ArrayList(new int[] { 1, 2, 2, 2, 5 });
-            expectedNumbers = 3;
+            expectedNumbers = 0;
 
             yield return new object[] { value, list, expectedList, expectedNumbers };
 
@@ -50,7 +46,7 @@ namespace Lists.Tests.ArrayListsTestSources
             value = 0;
             list = new ArrayList(new int[] { });
             expectedList = new ArrayList(new int[] { });
-            expectedNumbers = 3;
+            expectedNumbers = 0;
 
             yield return new object[] { value, list, expectedList, expectedNumbers };
 

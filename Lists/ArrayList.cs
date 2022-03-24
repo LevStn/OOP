@@ -74,10 +74,15 @@ namespace Lists
 
         public void AddValuesToTheBegin(int value)
         {
+             if (Length >= _array.Length)
+            {
 
+                UpSize();
+              
+            }
 
-            int newLenght = (int)(_array.Length * 1.5d);
-            int[] newArray = new int[newLenght];
+            int newLength = _array.Length;
+            int[] newArray = new int[newLength];
 
             Length++;
 
@@ -93,91 +98,116 @@ namespace Lists
         }
 
 
-       public void AddValuesToIndex(int value, int index)
+
+
+        public void AddValuesToIndex(int value, int index)
         {
-            if(index > Length+1 || index <0)
+            if(index > Length )
             {
-                throw new Exception("index can`t > Length and < 0");
+                throw new Exception("index can`t > Length");
             }
 
-            if (index == Length + 1)
+
+            if (Length >= _array.Length)
             {
-                AddValuesToTheEnd(value);
+
+                UpSize();
+
             }
-            else
+
+            int newLength = _array.Length;
+            int[] newArray = new int[newLength];
+
+
+            for (int i = 0; i < Length; i++)
             {
-                int newLenght = (int)(_array.Length * 1.5d + 1);
-                int[] newArray = new int[newLenght];
-
-
-                for (int i = 0; i < Length; i++)
-                {
-                    newArray[i] = _array[i];
-                }
-                for (int i = index; i < Length; i++)
-                {
-                    newArray[i + 1] = _array[i];
-                }
-
-                newArray[index] = value;
-                _array = newArray;
-
-                Length++;
+                newArray[i] = _array[i];
             }
+            for (int i = index; i < Length; i++)
+            {
+                newArray[i + 1] = _array[i];
+            }
+
+            newArray[index] = value;
+            _array = newArray;
+
+            Length++;
+            
 
         }
+
+
+
 
         public void DeleteLast()
         {
-            if (Length > 0)
+            if (Length == 0)
             {
-                Length--;
+
+                throw new Exception("Length == 0");
             }
-           
+
+            else  
+            
+             Length--;           
         }
+
+
+
 
         public void DeleteBegin()
         {
-            int [] newArray=new int[Length];    
-            for(int i = 0; i < Length-1; i++)
+
+            if (Length == 0)
             {
-                newArray[i] = _array[i+1];
+
+                throw new Exception("Length == 0");
+            }
+
+            for (int i = 0; i < Length; i++)
+            {
+                _array[i] = _array[i+1];
 
             }
 
-            _array = newArray;
-        
             Length--;
 
         }
 
 
-        public void DeleteByIndex(int index)
+
+
+        public int DeleteByIndex(int index)
         {
-            if(index<Length && index>=0)
+
+            if(index < 0 || index >= Length)
             {
-                int[] newArray = new int[Length];
-                newArray = _array;
-
-               for(int i = index; i<Length; i++)
-                {
-                    newArray[i]=_array[i+1];
-                }
-
-                
-
-                Length--;
-
+                throw new Exception("index == 0 || index >= Length");
             }
 
+            int deleteNumb = _array[index];
+            
+            for(int i = index; i<Length; i++)
+            {
+                _array[i]=_array[i+1];
+            }
+            
+             Length--;
+
+            return deleteNumb;
         }
-       public void DeleteTHeEndNElements (int number )
+
+
+
+
+        public void DeleteTHeEndNElements (int number )
        {
             if (number>0 && number<=Length)
             {                            
                 Length= Length-number;
             }
        }
+
 
 
 
@@ -394,6 +424,7 @@ namespace Lists
            
             int count =0;
             for (int i = 0; i < Length; i++)
+
 
                 if (_array[i] == value)
                 {

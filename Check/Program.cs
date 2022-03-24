@@ -5,18 +5,23 @@
 
 ArrayList list=new ArrayList();
 
-list.AddValuesToTheEnd(3);
 
-for(int i=0; i<9; i++)
+
+for(int i=0; i<2; i++)
 {
-    list.AddValuesToTheEnd(5);
+    list.AddValuesToTheEnd(-5);
+    list.AddValuesToTheEnd(-6);
+    list.AddValuesToTheEnd(-7);
+    list.AddValuesToTheEnd(-8);
+    list.AddValuesToTheEnd(-9);
+    list.AddValuesToTheEnd(-10);
 
 }
-list.AddValuesToTheEnd(65);
 
 list.Write();
 
 
-list.AddValuesToTheBegin(33);
+list.DeleteTHeEndNElements(-2);
 list.Write();
 
+Console.WriteLine();

@@ -1,11 +1,10 @@
 ﻿using NUnit.Framework;
 using System.Collections;
-using Lists.Tests.ArrayListsTestSources;
 
 
 namespace Lists.Tests.ArrayListsTestSources
 {
-    internal class AddValuesToTheEndTestsSource : IEnumerable
+    public class AddValuesToTheEndTestsSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
