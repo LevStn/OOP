@@ -201,12 +201,17 @@ namespace Lists
 
 
         public void DeleteTHeEndNElements (int number )
-       {
+        {
+            if (number>Length || number <0)
+            {
+                throw new Exception("number>Length || number <0 ");
+            }
+
             if (number>0 && number<=Length)
             {                            
                 Length= Length-number;
             }
-       }
+        }
 
 
 
@@ -218,53 +223,51 @@ namespace Lists
                 throw new Exception("number can`t > Length and < 0");
             }
 
-            int [] newArray = new int[Length];
-            newArray = _array;
-
             for( int i = 0; i<= Length- number; i++)
             {
-                newArray[i] = _array[i+ number];
+                _array[i] = _array[i+ number];
 
 
             }
 
-           
-            _array = newArray;
-            Length= Length-number;
-            
-
+            Length= Length-number;          
         }
+
 
 
         public void DeleteByIndexNElemets(int index, int number)
         {
-            if(number<0 || number>Length || index<0 || index>Length)
+            if(number<0 || number>Length || index<0 || index>=Length)
             {
-                throw new Exception("nubmer and index can`t <0 and > Length");
+                throw new Exception("number<0 || number>Length || index<0 || index>Length");
             } 
-
-            int [] newArray = new int [Length];
-            newArray = _array;
-
+        
             for(int i=index; i<=Length-number; i++)
             {
-                newArray[i] = _array[i + number];
+                _array[i] = _array[i + number];
             }
-
-            _array = newArray;
+ 
             Length = Length - number;
         }
 
 
+
         public int GetValueIndex (int index)
         {
-            int[] newArray = new int[Length];
-            newArray = _array;
-            newArray[index] = newArray[index];
+            if (index<0 || index>=Length)
+            {
+                throw new Exception(" index<0 || index>=Length ");
+            }
 
-            return newArray[index];
+            return _array[index];
 
         }
+
+
+
+
+
+
 
 
         public int FindeIndexByValue(int value)

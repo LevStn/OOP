@@ -1,8 +1,10 @@
 ﻿using NUnit.Framework;
 using System.Collections;
+
+
 namespace Lists.Tests.ArrayListsTestSources
 {
-    internal class DeleteBeginTestsSource : IEnumerable
+    public class DeleteBeginTestsSource : IEnumerable
     {
 
         public IEnumerator GetEnumerator()

@@ -119,6 +119,92 @@ namespace Lists.Tests
 
 
 
+        [TestCaseSource(typeof(DeleteTHeEndNElementsTestsSource))]
+        public void DeleteTHeEndNElementsTests(int number, ArrayList list, ArrayList expected)
+        {
+
+            ArrayList actualList = list;
+            list.DeleteTHeEndNElements(number);
+
+            Assert.AreEqual(expected, actualList);
+        }
+
+        [TestCaseSource(typeof(NegativeDeleteTHeEndNElementsTestsSource))]
+        public void DeleteTHeEndNElements_WhenNumberMoreLength_ShouldThrowException(int number, ArrayList list)
+        {
+            ArrayList actualList = list;
+
+            Assert.Throws<Exception>(() => list.DeleteTHeEndNElements(number));
+        }
+
+
+
+
+        [TestCaseSource(typeof(DeleteTHeBegineNElementsTestsSource))]
+        public void DeleteTHeBegineNElementsTests(int number, ArrayList list, ArrayList expected)
+        {
+
+            ArrayList actualList = list;
+            list.DeleteTHeBegineNElements(number);
+
+            Assert.AreEqual(expected, actualList);
+        }
+
+        [TestCaseSource(typeof(NegativeDeleteTHeBegineNElementsTestsSource))]
+        public void DeleteTHeBegineNElements_WhenNumberMoreLength_ShouldThrowException(int number, ArrayList list)
+        {
+            ArrayList actualList = list;
+
+            Assert.Throws<Exception>(() => list.DeleteTHeBegineNElements(number));
+        }
+
+
+
+
+        [TestCaseSource(typeof(DeleteByIndexNElemetsTestsSource))]
+        public void DeleteByIndexNElemetsTests(int index, int number, ArrayList list, ArrayList expected)
+        {
+
+            ArrayList actualList = list;
+            list.DeleteByIndexNElemets(index, number);
+
+            Assert.AreEqual(expected, actualList);
+        }
+
+        [TestCaseSource(typeof(NegativeDeleteByIndexNElemetsTestsSource))]
+        public void DeleteByIndexNElemetsTestsSource_WhenNumberandIndexLess0OrMoreLength_ShouldThrowException(int index, int number, ArrayList list)
+        {
+            ArrayList actualList = list;
+
+            Assert.Throws<Exception>(() => list.DeleteByIndexNElemets(index, number));
+        }
+
+
+        [TestCaseSource(typeof(GetValueIndexTestsSource))] 
+        public void GetValueIndexTests(int index, ArrayList list, int expected)
+        {
+
+           int actual= list.GetValueIndex(index);
+
+            Assert.AreEqual(actual, expected);
+
+        }
+
+        [TestCaseSource(typeof(NegativeGetValueIndexTestsSource))]
+        public void DeleteByIndexNElemetsTestsSource_WhenIndexLess0OrMoreOrEqualLength_ShouldThrowException(int index, ArrayList list)
+        {
+            
+
+            Assert.Throws<Exception>(() => list.GetValueIndex(index));
+        }
+
+
+
+
+
+
+
+
 
 
         [TestCaseSource(typeof(DeleteByValueAllTests))]

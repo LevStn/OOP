@@ -1,7 +1,5 @@
 ﻿using NUnit.Framework;
 using System.Collections;
-using Lists;
-using Lists.Tests;
 
 namespace Lists.Tests.ArrayListsTestSources
 {
