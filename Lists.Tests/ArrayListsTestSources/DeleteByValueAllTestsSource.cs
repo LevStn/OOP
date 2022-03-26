@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Lists.Tests.ArrayListsTestSources
 {
-    public class DeleteByValueAllTests : IEnumerable
+    public class DeleteByValueAllTestsSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {

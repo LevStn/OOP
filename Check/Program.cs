@@ -7,8 +7,11 @@ ArrayList list=new ArrayList();
 
 
 
-for(int i=0; i<1; i++)
+for(int i=0; i<10; i++)
 {
+    list.AddValuesToTheEnd(5);
+
+    
 
 
 }
@@ -16,7 +19,7 @@ for(int i=0; i<1; i++)
 list.Write();
 
 
-int a =list.DeleteByValueFirst(6);
+ArrayList newList=new ArrayList(new int[] { 1, 1, 1, 1,8,9,10,1,2,2 });
+
+list.AddListToEnd(newList);
 list.Write();
-  
-Console.WriteLine(a);

@@ -71,15 +71,14 @@ namespace Lists
 
 
 
-
         public void AddValuesToTheBegin(int value)
         {
              if (Length >= _array.Length)
-            {
+             {
 
                 UpSize();
-              
-            }
+               
+             }
 
             int newLength = _array.Length;
             int[] newArray = new int[newLength];
@@ -96,7 +95,6 @@ namespace Lists
 
             _array[0] = value;
         }
-
 
 
 
@@ -138,7 +136,6 @@ namespace Lists
 
 
 
-
         public void DeleteLast()
         {
             if (Length == 0)
@@ -151,7 +148,6 @@ namespace Lists
             
              Length--;           
         }
-
 
 
 
@@ -173,7 +169,6 @@ namespace Lists
             Length--;
 
         }
-
 
 
 
@@ -199,7 +194,6 @@ namespace Lists
 
 
 
-
         public void DeleteTHeEndNElements (int number )
         {
             if (number>Length || number <0)
@@ -212,7 +206,6 @@ namespace Lists
                 Length= Length-number;
             }
         }
-
 
 
 
@@ -362,6 +355,7 @@ namespace Lists
         }
             
 
+
         public int FindeIndexMaxElement()
         {
             if (Length < 1)
@@ -472,8 +466,6 @@ namespace Lists
 
 
 
-
-
         public int DeleteByValueAll(int value)
         {
            
@@ -494,6 +486,43 @@ namespace Lists
             
 
             return count;
+
+        }
+
+
+
+        public void AddListToEnd(ArrayList newList)
+        {
+            
+            if (newList == null)
+            {
+
+                throw new NullReferenceException();
+            }
+
+            
+
+            int [] newArray=new int [_array.Length + newList.Length];
+
+
+            for (int i = 0; i < _array.Length; i++)
+            {
+                newArray[i] = _array[i];
+            }
+                
+
+            for (int i = 0; i < newList.Length; i++)
+            {
+                newArray[i +Length] = newList[i];
+
+                
+                
+            }
+            
+  
+            _array = newArray;
+            Length += newList.Length;
+
 
         }
 

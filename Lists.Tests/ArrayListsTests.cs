@@ -361,11 +361,7 @@ namespace Lists.Tests
 
 
 
-
-
-
-
-        [TestCaseSource(typeof(DeleteByValueAllTests))]
+        [TestCaseSource(typeof(DeleteByValueAllTestsSource))]
         public void DeleteByValueAllTests(int value, ArrayList list, ArrayList expectedList, int expectedNumbers)
         {
 
@@ -377,12 +373,35 @@ namespace Lists.Tests
             Assert.AreEqual(expectedList, actualList);
         }
 
+
+
+        [TestCaseSource(typeof(AddListToEndTestsSource))]
+        public void AddListTests (ArrayList list,ArrayList newList, ArrayList expected)
+        {
+
+                
+           ArrayList actualList= list;
+           list.AddListToEnd(newList);
+
+            Assert.AreEqual(expected, actualList);
+
+
+        }
+
+        [TestCaseSource(typeof(NegativeAddListToEndTestsSource))]
+        public void AddListToEnd_WhenNewListIsEqual0_ShouldThrowNullReferenceException(ArrayList list , ArrayList Newlist)
+        {
+            Assert.Throws<NullReferenceException>(() => list. AddListToEnd(Newlist));
+        }
+
+
+
     }
 
 
 
 
-    
+
 
 
 
