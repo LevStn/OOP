@@ -53,8 +53,38 @@ namespace Lists.Tests.ArrayListsTestSources
             yield return new object[] { value, index, list, expected };
 
 
+            
+
+        }
+    }
+
+    public class NegativeAddValuesToIndexTestsSource : IEnumerable
+    {
+
+        public IEnumerator GetEnumerator()
+        {
+
+            int value = 1;
+            int index = 2;
+            ArrayList list = new ArrayList(new int[] {  });
+
+            yield return new object[] { value, index, list };
 
 
+
+            value = 1;
+            index = 4;
+            list = new ArrayList(new int[] { 0, 0, 0 });
+
+            yield return new object[] { value, index, list };
+
+
+
+            value = 1;
+            index = -1;
+            list = new ArrayList(new int[] { 0, 0, 0 });
+
+            yield return new object[] { value, index, list };
         }
 
     }

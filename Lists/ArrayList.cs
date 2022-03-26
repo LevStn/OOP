@@ -102,9 +102,9 @@ namespace Lists
 
         public void AddValuesToIndex(int value, int index)
         {
-            if(index > Length )
+            if(index > Length || index <0  )
             {
-                throw new Exception("index can`t > Length");
+                throw new Exception("index > Length || index <0");
             }
 
 
@@ -265,11 +265,6 @@ namespace Lists
 
 
 
-
-
-
-
-
         public int FindeIndexByValue(int value)
         {
             int result = -1;
@@ -288,15 +283,23 @@ namespace Lists
         }
 
 
-        public void ChangesByIndex(int index, int value)
+
+        public int ChangesByIndex(int index, int value)
         {
+
             if(index<0 || index>=Length)
             {
                 throw new Exception("index can`t < 0 and > Length ");
             }
 
+            int oldNumb=_array[index];
+
             _array[index] = value;
+
+            return oldNumb;
         }
+
+
 
         public void Reverse()
         {
@@ -310,9 +313,19 @@ namespace Lists
     
         }
 
+
+
         public int FindeMaxElement()
         {
-            int maxValue = _array.Length;
+
+            if ( Length <1)
+            {
+                throw new Exception(" Length <1");
+                
+            }
+
+            int maxValue = _array[0];
+
             for (int i=0; i < Length; i++)
             {
                 if( _array[i] > maxValue)
@@ -325,9 +338,17 @@ namespace Lists
         }
 
 
-        public int FindeMinElevent()
+
+        public int FindeMinElement()
         {
-            int minValue = _array.Length;
+            if (Length < 1)
+            {
+                throw new Exception(" Length <1");
+
+            }
+
+            int minValue = _array[0];
+
             for (int i=0; i< Length; i++)
             {
                 if (_array[i] < minValue)
@@ -343,33 +364,57 @@ namespace Lists
 
         public int FindeIndexMaxElement()
         {
-           int indexMax = FindeMaxElement();
-           
-           for(int i=0; i< Length; i++)
+            if (Length < 1)
+            {
+                throw new Exception(" Length <1");
 
-               if(_array[i]==indexMax)
+            }
+
+           int maxElement = FindeMaxElement();
+           int indexMax = 0;
+
+           for(int i=0; i< Length; i++)
+           {
+
+                if (_array[i] == maxElement)
                 {
                     indexMax = i;
-                    
-                }    
+
+                }
+
+            }
 
             return indexMax;
-
         }
+
+
 
         public int FindeIndexMinElement()
         {
-            int indexMin=FindeMinElevent();
+
+            if (Length < 1)
+            {
+                throw new Exception(" Length <1");
+
+            }
+
+            int minElement = FindeMinElement();
+            int indexMin= _array[0];
 
             for( int i=0; i< Length; i++)
-                if( _array[i]==indexMin)
+            {
+
+                if (_array[i] == minElement)
                 {
                     indexMin = i;
                 }
+            }
 
             return indexMin;
         }
         
+
+
         public void GetSortAscending()
         {
             int tmp;
@@ -388,7 +433,8 @@ namespace Lists
         }
 
         
-        public void GetDecendingSort()
+
+        public void GetSortDecending()
         {
             int tmp;
             for (int j = 0; j < Length; j++)
@@ -406,9 +452,11 @@ namespace Lists
         }
 
 
+
         public int DeleteByValueFirst(int value)
         {
             int index = -1;
+
             for (int i = 0; i < Length; i ++)
                 if(value == _array[i])
                 {
@@ -421,6 +469,10 @@ namespace Lists
             return index;
 
         }
+
+
+
+
 
         public int DeleteByValueAll(int value)
         {
@@ -521,36 +573,7 @@ namespace Lists
             _array = newArray;
 
         }
-        private void InsertOne(int index)
-        {
-
-            int newLenght = _array.Length  + 1;
-            int[] newArray = new int[newLenght];
-            for (int i = 0; i < _array.Length; i++)
-            {
-                newArray[i+1] = _array[i];
-            }
-            _array = newArray;
-
-        }
-
-        private void DownSize()
-        {
-            int newLength=_array.Length;
-            int[] newArray = new int[newLength];
-
-            for ( int i = 0; i < _array.Length; i++)
-            {
-                newArray[i]= _array[i];
-            }
-
-            _array= newArray;
-        }
-
-
-
-
-     
+       
 
     }
 }
