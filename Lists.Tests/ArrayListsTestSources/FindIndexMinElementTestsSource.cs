@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Lists.Tests.ArrayListsTestSources
 {
-    internal class FindeIndexMaxElementTestsSource : IEnumerable
+    internal class FindIndexMinElementTestsSource : IEnumerable
     {
 
         public IEnumerator GetEnumerator()
@@ -14,21 +14,21 @@ namespace Lists.Tests.ArrayListsTestSources
 
 
 
-            list = new ArrayList(new int[] { 1, 2, 3, 40, 5, 10 });
-            expected = 3;
+            list = new ArrayList(new int[] { 1, 2, 3, 40, 5, 0 });
+            expected = 5;
             yield return new object[] { list, expected };
 
 
 
             list = new ArrayList(new int[] { -10, -20, -1, -5 });
-            expected = 2;
+            expected = 1;
             yield return new object[] { list, expected };
 
 
 
 
             list = new ArrayList(new int[] { -1, -10, 5, 6 });
-            expected = 3;
+            expected = 1;
             yield return new object[] { list, expected };
 
 
@@ -45,7 +45,7 @@ namespace Lists.Tests.ArrayListsTestSources
         }
     }
 
-    public class NegativeFindeIndexMaxElementTestsSource : IEnumerable
+    public class NegativeFindIndexMinElementTestsSource : IEnumerable
     {
 
         public IEnumerator GetEnumerator()

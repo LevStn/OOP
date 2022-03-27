@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Lists.Tests.ArrayListsTestSources
 {
-    public class FindeIndexByValueTestsSource : IEnumerable
+    public class FindIndexByValueTestsSource : IEnumerable
     {
 
         public IEnumerator GetEnumerator()

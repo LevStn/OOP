@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace Lists.Tests.ArrayListsTestSources
 {
-    public class FindeMaxElementTestsSource : IEnumerable
+    public class FindMaxElementTestsSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {

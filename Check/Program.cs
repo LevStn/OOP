@@ -7,11 +7,13 @@ ArrayList list=new ArrayList();
 
 
 
-for(int i=0; i<10; i++)
+for(int i=0; i<1; i++)
 {
     list.AddValuesToTheEnd(5);
-
     
+
+
+
 
 
 }
@@ -19,7 +21,7 @@ for(int i=0; i<10; i++)
 list.Write();
 
 
-ArrayList newList=new ArrayList(new int[] { 1, 1, 1, 1,8,9,10,1,2,2 });
+ArrayList newList=new ArrayList(new int[] { 1 });
 
-list.AddListToEnd(newList);
+list.AddListToIndex(newList, 3);
 list.Write();

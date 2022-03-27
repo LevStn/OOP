@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace Lists.Tests.ArrayListsTestSources
 {
-    public class FindeMinElementTestsSource : IEnumerable
+    public class FindMinElementTestsSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
@@ -40,7 +40,7 @@ namespace Lists.Tests.ArrayListsTestSources
     }
 
 
-    public class NegativeFindeMinElementTestsSource : IEnumerable
+    public class NegativeFindMinElementTestsSource : IEnumerable
     {
 
         public IEnumerator GetEnumerator()

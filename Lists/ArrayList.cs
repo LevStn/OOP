@@ -308,7 +308,7 @@ namespace Lists
 
 
 
-        public int FindeMaxElement()
+        public int FindMaxElement()
         {
 
             if ( Length <1)
@@ -332,7 +332,7 @@ namespace Lists
 
 
 
-        public int FindeMinElement()
+        public int FindMinElement()
         {
             if (Length < 1)
             {
@@ -356,7 +356,7 @@ namespace Lists
             
 
 
-        public int FindeIndexMaxElement()
+        public int FindIndexMaxElement()
         {
             if (Length < 1)
             {
@@ -364,7 +364,7 @@ namespace Lists
 
             }
 
-           int maxElement = FindeMaxElement();
+           int maxElement = FindMaxElement();
            int indexMax = 0;
 
            for(int i=0; i< Length; i++)
@@ -383,7 +383,7 @@ namespace Lists
 
 
 
-        public int FindeIndexMinElement()
+        public int FindIndexMinElement()
         {
 
             if (Length < 1)
@@ -392,7 +392,7 @@ namespace Lists
 
             }
 
-            int minElement = FindeMinElement();
+            int minElement = FindMinElement();
             int indexMin= _array[0];
 
             for( int i=0; i< Length; i++)
@@ -525,6 +525,105 @@ namespace Lists
 
 
         }
+
+
+
+        public void AddListToBegin(ArrayList newList)
+        {
+
+            if (newList == null)
+            {
+
+                throw new NullReferenceException();
+            }
+
+
+
+            int[] newArray = new int[_array.Length + newList.Length];
+
+
+            for (int i = 0; i < _array.Length; i++)
+            {
+                newArray[i+ newList.Length] = _array[i];
+            }
+
+
+            for (int i = 0; i < newList.Length; i++)
+            {
+                newArray[i] = newList[i];
+
+
+
+            }
+
+
+            _array = newArray;
+            Length += newList.Length;
+
+
+        }
+
+
+
+        public void AddListToIndex(ArrayList newList, int index)
+        {
+
+            if (newList == null)
+            {
+
+                throw new NullReferenceException("(newList == null");
+            }
+
+            if (index ==0)
+            {
+                AddListToBegin(newList);
+
+
+                return;
+            }
+
+
+            int[] newArray = new int[_array.Length + newList.Length];
+
+            if (index > Length)
+            {
+                throw new IndexOutOfRangeException("index > Length");
+            }
+
+                
+
+            for (int i = 0; i < index; i++)
+            {
+                newArray[i] = _array[i];
+            }
+
+
+            for (int i = 0; i < newList.Length; i++)
+            {
+                newArray[i+index] = newList[i];
+
+
+
+            }
+
+            for (int i = index ; i <= _array.Length - index; i++)
+            {
+                newArray[i + newList.Length] = _array[i];
+
+            }
+
+
+
+
+
+            _array = newArray;
+            Length += newList.Length;
+
+
+        }
+
+
+
 
 
 

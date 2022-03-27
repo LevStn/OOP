@@ -21,7 +21,6 @@ namespace Lists.Tests
 
 
 
-
         [TestCaseSource(typeof(AddValuesToTheBeginTestsSource))]
         public void AddValuesToTheBeginTests(int value, ArrayList list, ArrayList expected)
         {
@@ -33,7 +32,6 @@ namespace Lists.Tests
         }
 
         
-
 
         [TestCaseSource(typeof(AddValuesToIndexTestsSource))]
         public void AddValuesToIndexTests(int value, int index, ArrayList list, ArrayList expected)
@@ -210,7 +208,7 @@ namespace Lists.Tests
 
 
 
-        [TestCaseSource(typeof(FindeIndexByValueTestsSource))]
+        [TestCaseSource(typeof(FindIndexByValueTestsSource))]
         public void FindeIndexByValueTests(int value, ArrayList list, int expected)
         {
 
@@ -258,11 +256,11 @@ namespace Lists.Tests
 
 
 
-        [TestCaseSource(typeof(FindeMaxElementTestsSource))]
+        [TestCaseSource(typeof(FindMaxElementTestsSource))]
         public void FindeMaxElementTests(ArrayList list, int expected)
         {
 
-            int actual = list.FindeMaxElement();
+            int actual = list.FindMaxElement();
 
             Assert.AreEqual(actual, expected);
         }
@@ -270,56 +268,56 @@ namespace Lists.Tests
         [TestCaseSource(typeof(NegativeFindeMaxElementTestsSource))]
         public void FindeMaxElement_WheLengthLess1_ShouldThrowException(ArrayList list)
         {
-            Assert.Throws<Exception>(() => list.FindeMaxElement());
+            Assert.Throws<Exception>(() => list.FindMaxElement());
         }
 
 
 
-        [TestCaseSource(typeof(FindeMinElementTestsSource))]
+        [TestCaseSource(typeof(FindMinElementTestsSource))]
         public void FindeMinElementTests(ArrayList list, int expected)
         {
 
-            int actual = list.FindeMinElement();
+            int actual = list.FindMinElement();
 
             Assert.AreEqual(actual, expected);
         }
 
-        [TestCaseSource(typeof(NegativeFindeMinElementTestsSource))]
+        [TestCaseSource(typeof(NegativeFindMinElementTestsSource))]
         public void FindeMinElement_WhenLengthLess1_ShouldThrowException(ArrayList list)
         {
-            Assert.Throws<Exception>(() => list.FindeMinElement());
+            Assert.Throws<Exception>(() => list.FindMinElement());
         }
 
 
 
-        [TestCaseSource(typeof(FindeIndexMaxElementTestsSource))]
+        [TestCaseSource(typeof(FindIndexMaxElementTestsSource))]
         public void FindeIndexMaxElementTest(ArrayList list, int expected)
         {
-            int actual = list.FindeIndexMaxElement();
+            int actual = list.FindIndexMaxElement();
 
             Assert.AreEqual(actual,expected);
         }
 
-        [TestCaseSource(typeof(NegativeFindeIndexMaxElementTestsSource))]
+        [TestCaseSource(typeof(NegativeFindIndexMaxElementTestsSource))]
         public void FindeIndexMaxElement_WhenLengthLess1_ShouldThrowException(ArrayList list)
         {
-            Assert.Throws<Exception>(() => list.FindeIndexMaxElement());
+            Assert.Throws<Exception>(() => list.FindIndexMaxElement());
         }
 
 
 
-        [TestCaseSource(typeof(FindeIndexMinElementTestsSource))]
+        [TestCaseSource(typeof(FindIndexMinElementTestsSource))]
         public void FindeIndexMinElementTest(ArrayList list, int expected)
         {
-            int actual = list.FindeIndexMinElement();
+            int actual = list.FindIndexMinElement();
 
             Assert.AreEqual(actual, expected);
         }
 
-        [TestCaseSource(typeof(NegativeFindeIndexMinElementTestsSource))]
+        [TestCaseSource(typeof(NegativeFindIndexMinElementTestsSource))]
         public void FindeIndexMinElement_WhenLengthLess1_ShouldThrowException(ArrayList list)
         {
-            Assert.Throws<Exception>(() => list.FindeIndexMinElement());
+            Assert.Throws<Exception>(() => list.FindIndexMinElement());
         }
 
 
@@ -376,7 +374,7 @@ namespace Lists.Tests
 
 
         [TestCaseSource(typeof(AddListToEndTestsSource))]
-        public void AddListTests (ArrayList list,ArrayList newList, ArrayList expected)
+        public void AddListToendTests (ArrayList list,ArrayList newList, ArrayList expected)
         {
 
                 
@@ -395,6 +393,52 @@ namespace Lists.Tests
         }
 
 
+
+        [TestCaseSource(typeof(AddListToBeginTestsSource))]
+        public void AddListToBeginTests(ArrayList list, ArrayList newList, ArrayList expected)
+        {
+
+
+            ArrayList actualList = list;
+            list.AddListToBegin(newList);
+
+            Assert.AreEqual(expected, actualList);
+
+
+        }
+
+        [TestCaseSource(typeof(NegativeAddListToBeginTestsSource))]
+        public void AddListToBegin_WhenNewListIsEqual0_ShouldThrowNullReferenceException(ArrayList list, ArrayList Newlist)
+        {
+            Assert.Throws<NullReferenceException>(() => list.AddListToEnd(Newlist));
+        }
+
+
+
+        [TestCaseSource(typeof(AddListToIndexTestsSource))]
+        public void AddListToIndexTests(ArrayList list, ArrayList newList, int index, ArrayList expected)
+        {
+
+
+            ArrayList actualList = list;
+            list.AddListToIndex(newList, index);
+
+            Assert.AreEqual(expected, actualList);
+
+
+        }
+
+        [TestCaseSource(typeof(NegativeAddListToIndexTestsSource))]
+        public void AddListToIndex_WhenNewListIsEqual0_ShouldThrowNullReferenceException(ArrayList list, ArrayList Newlist, int index)
+        {
+            Assert.Throws<NullReferenceException>(() => list.AddListToIndex (Newlist, index)); ;
+        }
+
+        [TestCaseSource(typeof(Negative2AddListToIndexTestsSource))]
+        public void AddListToIndex_WhenIndexMoreLength_ShouldThrowNullIndexOutOfRangeException(ArrayList list, ArrayList Newlist, int index)
+        {
+            Assert.Throws<IndexOutOfRangeException>(() => list.AddListToIndex(Newlist, index)); ;
+        }
 
     }
 
