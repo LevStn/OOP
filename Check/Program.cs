@@ -2,26 +2,22 @@
 
 
 
-
-ArrayList list=new ArrayList();
-
+LinkedList list = new LinkedList();
 
 
-for(int i=0; i<1; i++)
-{
-    list.AddValuesToTheEnd(5);
-    
+list.AddToEnd(55);
+list.AddToEnd(66);
+list.AddToEnd(99);
 
 
 
 
 
-}
-
-list.Write();
 
 
-ArrayList newList=new ArrayList(new int[] { 1 });
+list.AddToIndex(11,1);
 
-list.AddListToIndex(newList, 3);
-list.Write();
+
+
+list.WriteLinkedList();
+
