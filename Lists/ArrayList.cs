@@ -16,6 +16,14 @@ namespace Lists
 
         }
 
+        public ArrayList(int value)
+        {
+
+            _array = new int[10];
+            _array[0] = value;
+            Length = 1;
+        }
+
         public ArrayList(int[] array)
         {
 

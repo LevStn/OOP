@@ -66,6 +66,25 @@ namespace Lists
             _tail = new Node(value);
         }
 
+        public LinkedList(int[] values)
+        {
+            if (values.Length == 0)
+            {
+                _root = null;
+                _tail = null;
+            }
+            else
+            {
+                _root = new Node(values[0]);
+                _tail = _root;
+
+                for (int i = 1; i < values.Length; i++)
+                {
+                    AddToEnd(values[i]);
+                }
+            }
+        }
+
 
         public void AddToEnd(int value)
         {
@@ -80,45 +99,128 @@ namespace Lists
                 _tail.Next = new Node(value);
                 _tail = _tail.Next;
             }
-            Length++;
+           
         }
 
 
 
-        public void AddToBegin(int value)
+        public void AddToBegine(int value)
         {
-
 
             Node crnt= new Node(value);
             crnt.Next = _root;
             _root=crnt; 
-            
-
-            Length++;
+   
         }
 
 
 
-        //public void AddToIndex(int value, int index)
-        //{
-        //    Node crnt = _root;
-             
+        public void AddToIndex(int value, int index)
+        {
+            if(index > Length || index < 0)
+            {
+                throw new IndexOutOfRangeException("index > Length ||  index < 0");
+            }
 
-        //    for (int i=0; i<Length; i++)
-        //    {
-        //        if (index == i)
-        //        {
-        //           crnt.Next = new Node(value);
-        //        }
+            if( index > 0)
+            {
+
+                Node tmp = _root;
+
+                for (int i = 0; i < index - 1; i++)
+                {
+
+                    tmp = tmp.Next;
+
+                }
+                Node crnt = new Node(value);
+                crnt.Next = tmp.Next;
+                tmp.Next = crnt;
+            }
+
+            else
+            {
+                AddToBegine(value);
+            }
+
+        }
 
 
-        //        _root = crnt;
+        public void DelleteToEnd()
+        {
 
-        //    }
+            Node crnt = _root;
+            for(int i=1; i<Length-1; i++)
+            {
+                crnt = crnt.Next;
+            }
 
-        //    Length++;
+            crnt.Next = null;
+            Length--;
+
             
-        //}
+            
+
+        }
+
+
+        public void DellToBegine()
+        {
+
+            Node crnt = _root;
+
+            crnt=crnt.Next;
+            _root = crnt;
+
+        }
+
+
+        public override string ToString()
+        {
+            string s = "";
+            Node crnt = _root;
+
+            while (crnt != null)
+            {
+                s += $"{ crnt.Value}";
+                crnt = crnt.Next;
+            }
+
+            return s;
+        }
+
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || !(obj is LinkedList))
+            {
+                return false;
+            }
+
+            LinkedList list = (LinkedList)obj;
+
+            if (list.Length != this.Length)
+            {
+                return false;
+            }
+
+            Node thisCrnt = this._root;
+            Node listCrnt = list._root;
+
+            while (thisCrnt != null)
+            {
+                if (thisCrnt.Value != listCrnt.Value)
+                {
+                    return false;
+                }
+
+                thisCrnt = thisCrnt.Next;
+                listCrnt = listCrnt.Next;
+            }
+
+            return true;
+        }
+
 
 
 

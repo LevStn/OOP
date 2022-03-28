@@ -4,18 +4,22 @@
 
 LinkedList list = new LinkedList();
 
-
-list.AddToEnd(55);
-list.AddToEnd(66);
-list.AddToEnd(99);
+list.AddToEnd(22);
 
 
-
-
+    list.AddToBegine(99);
+    
+  
 
 
 
-list.AddToIndex(11,1);
+
+
+
+
+
+
+list.AddToIndex(1,2);
 
 
 
