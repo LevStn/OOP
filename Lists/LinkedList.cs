@@ -149,31 +149,75 @@ namespace Lists
         public void DelleteToEnd()
         {
 
-            Node crnt = _root;
-            for(int i=1; i<Length-1; i++)
+            if(Length==1 || Length ==0)
             {
-                crnt = crnt.Next;
+                _root = null;
             }
 
-            crnt.Next = null;
-            Length--;
+            else 
+            {
 
-            
-            
+                Node crnt = _root;
+                for (int i = 1; i < Length - 1; i++)
+                {
+                    crnt = crnt.Next;
+                }
+
+                crnt.Next = null;
+               
+            }
 
         }
 
 
-        public void DellToBegine()
+        public void DelleteToBegine()
+        {
+            if(Length == 0)
+            {
+                _root = null;
+            }
+            else
+            {
+
+                Node crnt = _root;
+
+                crnt = crnt.Next;
+                _root = crnt;
+            }
+
+        }
+
+
+        public void DeleteByIndex(int index)
         {
 
-            Node crnt = _root;
+            if (index > Length || index < 0)
+            {
+                throw new IndexOutOfRangeException("index > Length ||  index < 0");
+            }
 
-            crnt=crnt.Next;
-            _root = crnt;
+            if ( index > 0)
+            {
+
+                Node tmp = _root;
+
+                for (int i = 0; i < index - 1; i++)
+                {
+                    tmp = tmp.Next;
+                }
+
+
+                tmp.Next = tmp.Next.Next;
+
+
+            }
+            
+            else
+            {
+                DelleteToBegine();
+            }
 
         }
-
 
         public override string ToString()
         {

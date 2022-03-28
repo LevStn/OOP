@@ -51,9 +51,7 @@ namespace Lists.Tests
         {
             
             
-
             Assert.Throws<IndexOutOfRangeException>(() => list.AddToIndex(value, index));
-
         }
 
 
@@ -71,6 +69,41 @@ namespace Lists.Tests
 
         }
 
+
+
+        [TestCaseSource(typeof(DeleteToBegineTestsSource))]
+        public void DeleteToBegineTests(LinkedList list, LinkedList expected)
+        {
+
+
+            list.DelleteToBegine();
+
+            LinkedList actualList = list;
+
+            Assert.AreEqual(expected, actualList);
+
+        }
+
+
+
+        [TestCaseSource(typeof(DeleteByIndexTestsSource))]
+        public void DeleteByIndexTests(int index, LinkedList list, LinkedList expected)
+        {
+            list.DeleteByIndex(index);
+
+            LinkedList actualList = list;
+
+            Assert.AreEqual(expected, actualList);
+
+        }
+
+        [TestCaseSource(typeof(NegativeDeleteByIndexTestsSource))]
+        public void DeleteByIndex_WhenIndexMoreLengthOrLess0_ShouldThrowIndexOutOfRangeException(int index, LinkedList list)
+        {
+
+            Assert.Throws<IndexOutOfRangeException>(() => list.DeleteByIndex(index));
+
+        }
 
 
 
