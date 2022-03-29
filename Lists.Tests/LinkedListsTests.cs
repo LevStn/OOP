@@ -176,5 +176,16 @@ namespace Lists.Tests
             Assert.Throws<IndexOutOfRangeException>(() => list.DeleteByIndexNElements(number, index));
 
         }
+
+
+
+        [TestCaseSource(typeof(ValueByIndexTestsSource))]
+        public void ValueByIndexTests(int index, LinkedList list, int expected)
+        {
+            int actual = list.ValueByIndex(index);
+
+            Assert.AreEqual(expected, actual);
+
+        }
     }   
 }

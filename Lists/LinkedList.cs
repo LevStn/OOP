@@ -279,6 +279,8 @@ namespace Lists
         }
 
 
+
+
         public void DeleteByIndexNElements(int number, int index)
         {
 
@@ -321,6 +323,31 @@ namespace Lists
             
 
         }
+
+
+
+        public int ValueByIndex(int index)
+        {
+
+            Node crnt = _root;
+            int value = -1;
+
+
+            for (int i = 0; i < Length; i++)
+            {
+            
+                if (i == index)
+                {
+            
+                    value = crnt.Value;
+                }
+            
+                crnt = crnt.Next;
+            }
+            
+            return value;
+        }
+
 
         public override string ToString()
         {

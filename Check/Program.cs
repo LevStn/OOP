@@ -10,8 +10,10 @@ list.AddToEnd(3);
 list.AddToEnd(4);
 list.AddToEnd(5);
 
-list.WriteLinkedList();
 
-list.DeleteByIndexNElements(0,5);
 
-list.WriteLinkedList();
+int a =list.ValueByIndex(6);
+
+
+
+Console.WriteLine(a);
