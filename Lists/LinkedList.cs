@@ -104,7 +104,7 @@ namespace Lists
 
 
 
-        public void AddToBegine(int value)
+        public void AddToBegin(int value)
         {
 
             Node crnt= new Node(value);
@@ -140,13 +140,13 @@ namespace Lists
 
             else
             {
-                AddToBegine(value);
+                AddToBegin(value);
             }
 
         }
 
 
-        public void DelleteToEnd()
+        public void DeleteToEnd()
         {
 
             if(Length==1 || Length ==0)
@@ -170,7 +170,7 @@ namespace Lists
         }
 
 
-        public void DelleteToBegine()
+        public void DeleteToBegin()
         {
             if(Length == 0)
             {
@@ -214,8 +214,111 @@ namespace Lists
             
             else
             {
-                DelleteToBegine();
+                DeleteToBegin();
             }
+
+        }
+
+
+
+        public void DeleteToEndNElements(int number)
+        {
+
+            if (number > Length)
+            {
+                throw new InvalidOperationException("number > Length");
+            }
+
+
+            if (Length ==  number)
+            {
+                _root = null;
+            }
+            else
+            {
+                Node crnt = _root;
+                for (int i = 1; i < Length - number; i++)
+                {
+                    crnt = crnt.Next;
+                }
+                crnt.Next = null;
+
+            }
+            
+
+        }
+
+
+        public void DeleteToBeginNElements(int number)
+        {
+
+
+            if (number > Length)
+            {
+                throw new InvalidOperationException("number > Length");
+            }
+
+            if (Length == number)
+            {
+                _root = null;
+            }    
+            else
+            {
+
+                Node crnt = _root;
+                
+                for(int i = Length - number; i < Length ; i++)
+                {
+
+                crnt = crnt.Next;
+                }
+                _root = crnt;
+
+            }
+
+        }
+
+
+        public void DeleteByIndexNElements(int number, int index)
+        {
+
+            if (number > Length)
+            {
+                throw new InvalidOperationException("number > Length");
+            }
+
+            else if (index < 0 || index > Length || Length - number < index )
+            {
+                throw new IndexOutOfRangeException("index < 0 || index >= Length || Length - number < index");
+            }
+                        
+
+            
+            if ( index >0)
+            {
+                Node crnt = _root;
+               
+                for (int i = 1; i < index ; i++)
+                {
+                    crnt = crnt.Next;
+                    
+                   
+                }
+                for ( int j = 0; j < number ; j++)
+                {
+
+                crnt.Next= crnt.Next.Next;
+                }
+                
+            }
+            else if ( index == 0)
+            {
+
+                DeleteToBeginNElements(number);
+            }
+
+           
+            
 
         }
 

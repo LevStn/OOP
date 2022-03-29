@@ -22,10 +22,10 @@ namespace Lists.Tests
 
 
 
-        [TestCaseSource(typeof(AddToBegineTestsSource))]
+        [TestCaseSource(typeof(AddToBeginTestsSource))]
         public void AddToBegineTests(int value, LinkedList list, LinkedList expected)
         {
-            list.AddToBegine(value);
+            list.AddToBegin(value);
 
             LinkedList actualList = list;
 
@@ -49,8 +49,8 @@ namespace Lists.Tests
         [TestCaseSource(typeof(NegativeAddToIndexTestsSource))]
         public void AddToIndex_WhenIndexMoreLengthOrLess0_ShouldThrowIndexOutOfRangeException(int value, int index, LinkedList list)
         {
-            
-            
+
+
             Assert.Throws<IndexOutOfRangeException>(() => list.AddToIndex(value, index));
         }
 
@@ -61,7 +61,7 @@ namespace Lists.Tests
         {
 
 
-            list.DelleteToEnd();
+            list.DeleteToEnd();
 
             LinkedList actualList = list;
 
@@ -71,12 +71,12 @@ namespace Lists.Tests
 
 
 
-        [TestCaseSource(typeof(DeleteToBegineTestsSource))]
+        [TestCaseSource(typeof(DeleteToBeginTestsSource))]
         public void DeleteToBegineTests(LinkedList list, LinkedList expected)
         {
 
 
-            list.DelleteToBegine();
+            list.DeleteToBegin();
 
             LinkedList actualList = list;
 
@@ -89,6 +89,7 @@ namespace Lists.Tests
         [TestCaseSource(typeof(DeleteByIndexTestsSource))]
         public void DeleteByIndexTests(int index, LinkedList list, LinkedList expected)
         {
+
             list.DeleteByIndex(index);
 
             LinkedList actualList = list;
@@ -107,6 +108,73 @@ namespace Lists.Tests
 
 
 
+        [TestCaseSource(typeof(DeleteToEndNElementsTestsSource))]
+        public void DeleteToEndNElementsTests(int number, LinkedList list, LinkedList expected)
+        {
 
-    }
+            list.DeleteToEndNElements(number);
+            LinkedList actualList = list;
+
+            Assert.AreEqual(expected, actualList);
+
+        }
+
+        [TestCaseSource(typeof(NegativeDeleteToEndNElementsTestsSource))]
+        public void DeleteToEndNElements_WhenNumberMoreLength_ShouldThrowIndexOutOfRangeException(int number, LinkedList list)
+        {
+
+            Assert.Throws<InvalidOperationException>(() => list.DeleteToEndNElements(number));
+
+        }
+
+
+
+        [TestCaseSource(typeof(DeleteToBeginNElementsTestsSource))]
+        public void DeleteToBeginNElementsTests(int number, LinkedList list, LinkedList expected)
+        {
+
+            list.DeleteToBeginNElements(number);
+            LinkedList actualList = list;
+
+            Assert.AreEqual(expected, actualList);
+
+        }
+
+        [TestCaseSource(typeof(NegativeDeleteToBeginNElementsTestsSource))]
+        public void DeleteToBeginNElements_WhenNumberMoreLength_ShouldThrowInvalidOperationException(int number, LinkedList list)
+        {
+
+            Assert.Throws<InvalidOperationException>(() => list.DeleteToBeginNElements(number));
+
+        }
+
+
+
+        [TestCaseSource(typeof(DeleteByIndexNElementsTestsSource))]
+        public void DeleteByIndexNElementsTests(int number, int index, LinkedList list, LinkedList expected)
+        {
+            list.DeleteByIndexNElements(number, index);
+
+            LinkedList actualList = list;
+
+            Assert.AreEqual(expected, actualList);
+
+        }
+
+        [TestCaseSource(typeof(NegativeFirstDeleteByIndexNElementsTestsSource))]
+        public void DeleteByIndexNElements_WhenNumberMoreLength_ShouldThrowInvalidOperationException(int number, int index, LinkedList list)
+        {
+
+            Assert.Throws<InvalidOperationException>(() => list.DeleteByIndexNElements(number, index));
+
+        }
+
+        [TestCaseSource(typeof(NegativeSecondDeleteByIndexNElementsTestsSource))]
+        public void DeleteByIndexNElements_WhenIndexLess0OrMoreOrEqualLengthOrDifferenceLengthAndNumberLessIndex_ShouldThrowIndexOutOfRangeException( int number, int index, LinkedList list)
+        {
+
+            Assert.Throws<IndexOutOfRangeException>(() => list.DeleteByIndexNElements(number, index));
+
+        }
+    }   
 }
