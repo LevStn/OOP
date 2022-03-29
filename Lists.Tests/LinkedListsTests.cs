@@ -216,9 +216,86 @@ namespace Lists.Tests
         }
 
         [TestCaseSource(typeof (NegativeChangeValueByIndexTestsSource))]
-        public void NegativeChangeValueByIndex_WhenIndexLess0OrMoreOrEqualLength_ShouldThrowIndexOutOfRangeException( int value, int index, LinkedList list)
+        public void ChangeValueByIndex_WhenIndexLess0OrMoreOrEqualLength_ShouldThrowIndexOutOfRangeException( int value, int index, LinkedList list)
         {
             Assert.Throws<IndexOutOfRangeException>(() => list.ChangeValueByIndex(value, index));
+        }
+
+
+
+        [TestCaseSource(typeof(FindValueMaxElementTestsSource))]
+        public void FindValueMaxElementTests(LinkedList list, int expected)
+        {
+            
+
+            int actual = list.FindValueMaxElement();
+
+            Assert.AreEqual(expected, actual);
+
+            
+
+        }
+
+        [TestCaseSource(typeof(NegativeFindValueMaxElementTestsSource))]
+        public void FindValueMaxElement_WhenRootEqual0_ShouldThrowNullReferenceException( LinkedList list)
+        {
+            Assert.Throws<NullReferenceException>(() => list.FindValueMaxElement());
+        }
+
+
+
+        [TestCaseSource(typeof(FindValueMixElementTestsSource))]
+        public void FindValueMinElementTests(LinkedList list, int expected)
+        {
+
+
+            int actual = list.FindValueMinElement();
+
+            Assert.AreEqual(expected, actual);
+
+
+
+        }
+
+        [TestCaseSource(typeof(NegativeFindValueMaxElementTestsSource))]
+        public void FindValueMinElement_WhenRootEqual0_ShouldThrowNullReferenceException(LinkedList list)
+        {
+            Assert.Throws<NullReferenceException>(() => list.FindValueMaxElement());
+        }
+
+
+
+
+        [TestCaseSource(typeof(FindIndexMinElementTestsSource))]
+        public void FindIndexMinElementTests(LinkedList list, int expected)
+        {
+
+            int actual = list.FindIndexMinElement();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCaseSource(typeof(NegativeFindIndexMinElementTestsSources))]
+        public void FindIndexMinElement_WhenRootEqual0_ShouldThrowNullReferenceException(LinkedList list)
+        {
+            Assert.Throws<NullReferenceException>(() => list.FindIndexMinElement());
+        }
+
+
+
+        [TestCaseSource(typeof(FindIndexMaxElementTestsSource))]
+        public void FindIndexMaxElementTests(LinkedList list, int expected)
+        {
+
+            int actual = list.FindIndexMaxElement();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCaseSource(typeof(NegativeFindIndexMaxElementTestsSources))]
+        public void FindIndexManElement_WhenRootEqual0_ShouldThrowNullReferenceException(LinkedList list)
+        {
+            Assert.Throws<NullReferenceException>(() => list.FindIndexMaxElement());
         }
     }   
 

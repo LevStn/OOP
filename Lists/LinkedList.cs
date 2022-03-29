@@ -407,7 +407,122 @@ namespace Lists
 
  
 
-        //}
+        //}?????????????????????????????????
+
+
+
+        public int FindValueMaxElement()
+        {
+            if(_root == null)
+            {
+                throw new NullReferenceException("_root == null");
+            }
+
+            Node crnt = _root;
+            int valueMax = crnt.Value;
+            
+            for(int i=0; i < Length; i++)
+            {
+                if(crnt.Value > valueMax)
+                {
+                    valueMax = crnt.Value;
+
+                }
+
+                crnt = crnt.Next;
+            }
+
+            return valueMax;
+        }
+
+
+        public int FindValueMinElement()
+        {
+
+            if (_root == null)
+            {
+                throw new NullReferenceException("_root == null");
+            }
+
+            Node crnt = _root;
+            int valueMin = crnt.Value;
+
+            for (int i = 0; i < Length; i++)
+            {
+                if (crnt.Value < valueMin)
+                {
+                    valueMin = crnt.Value;
+
+                }
+
+                crnt = crnt.Next;
+            }
+
+            return valueMin;
+        }
+
+
+
+        public int FindIndexMinElement()
+        {
+
+            if (_root == null)
+            {
+                throw new NullReferenceException("_root == null");
+            }
+
+            Node crnt = _root;
+            int minElement = FindValueMinElement();
+            int indexMin = crnt.Value;
+
+            for(int i=0; i < Length; i++)
+            {
+
+                if (crnt.Value == minElement)
+                {
+                    indexMin = i;
+
+                }
+
+                crnt = crnt.Next;
+            }
+
+            return indexMin;
+
+        }
+
+
+
+        public int FindIndexMaxElement()
+        {
+
+            if (_root == null)
+            {
+                throw new NullReferenceException("_root == null");
+            }
+
+            Node crnt = _root;
+            int maxElement = FindValueMaxElement();
+            int indexMax = crnt.Value;
+
+            for (int i = 0; i < Length; i++)
+            {
+
+                if (crnt.Value == maxElement)
+                {
+                    indexMax = i;
+
+                }
+
+                crnt = crnt.Next;
+            }
+
+            return indexMax;
+
+        }
+
+
+
 
         public override string ToString()
         {
