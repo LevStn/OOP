@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Lists.Tests.LinkedListsTestsSources
 {
-    public class AddToBegineTestsSource : IEnumerable
+    public class AddToBeginTestsSource : IEnumerable
     {
 
         public IEnumerator GetEnumerator()
