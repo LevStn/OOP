@@ -266,7 +266,7 @@ namespace Lists
 
 
 
-        public int FindeIndexByValue(int value)
+        public int FindIndexByValue(int value)
         {
             int result = -1;
             

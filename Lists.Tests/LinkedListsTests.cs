@@ -179,13 +179,47 @@ namespace Lists.Tests
 
 
 
-        [TestCaseSource(typeof(ValueByIndexTestsSource))]
-        public void ValueByIndexTests(int index, LinkedList list, int expected)
+        [TestCaseSource(typeof(GetValueByIndexTestsSource))]
+        public void GetValueByIndexTests(int index, LinkedList list, int expected)
         {
-            int actual = list.ValueByIndex(index);
+            int actual = list.GetValueByIndex(index);
 
             Assert.AreEqual(expected, actual);
 
         }
+
+
+
+
+        [TestCaseSource(typeof(FindFirstIndexByValueTestsSource))]
+        public void FindFirstIndexByValueTests(int value, LinkedList list, int expected)
+        {
+            int actual = list.FindFirstIndexByValue(value);
+
+            Assert.AreEqual(expected, actual);
+
+        }
+
+
+
+        [TestCaseSource(typeof(ChangeValueByIndexTestsSource))]
+        public void ChangeValueByIndexTests(int value, int index, LinkedList list, LinkedList expectedList, int expectedOldNumb )
+        {
+            LinkedList actualList = list;
+
+            int actualOldNumb = list.ChangeValueByIndex(value, index);
+
+            Assert.AreEqual(expectedList, actualList);
+
+            Assert.AreEqual(expectedOldNumb, actualOldNumb);
+
+        }
+
+        [TestCaseSource(typeof (NegativeChangeValueByIndexTestsSource))]
+        public void NegativeChangeValueByIndex_WhenIndexLess0OrMoreOrEqualLength_ShouldThrowIndexOutOfRangeException( int value, int index, LinkedList list)
+        {
+            Assert.Throws<IndexOutOfRangeException>(() => list.ChangeValueByIndex(value, index));
+        }
     }   
+
 }

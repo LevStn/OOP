@@ -280,7 +280,6 @@ namespace Lists
 
 
 
-
         public void DeleteByIndexNElements(int number, int index)
         {
 
@@ -326,7 +325,8 @@ namespace Lists
 
 
 
-        public int ValueByIndex(int index)
+
+        public int GetValueByIndex(int index)
         {
 
             Node crnt = _root;
@@ -348,6 +348,66 @@ namespace Lists
             return value;
         }
 
+
+
+        public int FindFirstIndexByValue(int value)
+        {
+
+            int index = -1;
+            Node crnt = _root;
+
+            for(int i = 0; i < Length; i++)
+            {
+                if(value == crnt.Value)
+                {
+                    index = i;
+
+                   
+                }
+
+                crnt= crnt.Next;
+
+            }
+
+            return index;
+        }
+
+
+
+        public int ChangeValueByIndex(int value, int index)
+        {
+
+            if (index <0 || index >=Length)
+            {
+                throw new IndexOutOfRangeException("index <0 || index >=Length");
+            }
+
+            Node crnt = _root;
+            int oldValue = 0;
+
+            for(int i=0; i< Length; i++)
+            {
+                if(i == index)
+                {
+                   oldValue = crnt.Value;
+
+                    crnt.Value = value;
+                }
+
+                crnt = crnt.Next;
+            }
+
+            return oldValue;
+        }
+
+
+
+        //public void Reverse()
+        //{
+
+ 
+
+        //}
 
         public override string ToString()
         {

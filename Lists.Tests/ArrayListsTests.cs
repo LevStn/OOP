@@ -6,7 +6,7 @@ using System;
 
 namespace Lists.Tests
 {
-    public class Tests
+    public class ArrayListsTests
     {
 
         [TestCaseSource(typeof(AddValuesToTheEndTestsSource))]
@@ -209,10 +209,10 @@ namespace Lists.Tests
 
 
         [TestCaseSource(typeof(FindIndexByValueTestsSource))]
-        public void FindeIndexByValueTests(int value, ArrayList list, int expected)
+        public void FindIndexByValueTests(int value, ArrayList list, int expected)
         {
 
-            int actual = list.FindeIndexByValue(value);
+            int actual = list.FindIndexByValue(value);
 
             Assert.AreEqual(actual, expected);
 

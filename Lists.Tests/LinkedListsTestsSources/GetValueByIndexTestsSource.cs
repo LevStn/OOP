@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Lists.Tests.LinkedListsTestsSources
 {
-    public class ValueByIndexTestsSource : IEnumerable
+    public class GetValueByIndexTestsSource : IEnumerable
     {
 
         public IEnumerator GetEnumerator()
