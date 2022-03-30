@@ -199,15 +199,15 @@ namespace Lists
             if ( index > 0)
             {
 
-                Node tmp = _root;
+                Node crnt = _root;
 
                 for (int i = 0; i < index - 1; i++)
                 {
-                    tmp = tmp.Next;
+                    crnt = crnt.Next;
                 }
 
 
-                tmp.Next = tmp.Next.Next;
+                crnt.Next = crnt.Next.Next;
 
 
             }
@@ -402,12 +402,24 @@ namespace Lists
 
 
 
-        //public void Reverse()
-        //{
+        public void Reverse()
+        {
+
+            Node crnt = _root;
+            Node previous = null;
+            while ( crnt != null )
+            {
+                Node nextNoda = crnt.Next;
+                crnt.Next = previous;
+                previous = crnt;
+                crnt = nextNoda;
+            }
+
+            _root = previous;
 
  
 
-        //}?????????????????????????????????
+        }
 
 
 
@@ -434,6 +446,7 @@ namespace Lists
 
             return valueMax;
         }
+
 
 
         public int FindValueMinElement()
@@ -523,6 +536,157 @@ namespace Lists
 
 
 
+        public void SortAscending()
+        {
+            
+            Node crnt;
+            Node prev;
+
+            for (int i = Length - 2; i >= 0; i--)
+            {
+                if (i == 0)
+                {
+                    crnt = _root;
+                    if (crnt.Next != null && crnt.Value > crnt.Next.Value)
+                    {
+                        _root = crnt.Next;
+                        crnt.Next = _root.Next;
+                        _root.Next = crnt;
+                    }
+                    prev = _root;
+                }
+                else
+                {
+                    prev = GetNodeByIndex(i - 1);
+                    crnt = prev.Next;
+                }
+
+                while (crnt.Next != null && crnt.Value > crnt.Next.Value)
+                {
+                    prev.Next = crnt.Next;
+                    crnt.Next = prev.Next.Next;
+                    prev.Next.Next = crnt;
+
+                    prev = prev.Next;
+                }
+            }
+
+            _tail = GetNodeByIndex(Length - 1);
+        }
+
+
+
+
+        public void SortDescending()
+        {
+
+            Node crnt;
+            Node prev;
+
+            for (int i = Length - 2; i >= 0; i--)
+            {
+                if (i == 0)
+                {
+                    crnt = _root;
+                    if (crnt.Next != null && crnt.Value < crnt.Next.Value)
+                    {
+                        _root = crnt.Next;
+                        crnt.Next = _root.Next;
+                        _root.Next = crnt;
+                    }
+                    prev = _root;
+                }
+                else
+                {
+                    prev = GetNodeByIndex(i - 1);
+                    crnt = prev.Next;
+                }
+
+                while (crnt.Next != null && crnt.Value < crnt.Next.Value)
+                {
+                    prev.Next = crnt.Next;
+                    crnt.Next = prev.Next.Next;
+                    prev.Next.Next = crnt;
+
+                    prev = prev.Next;
+                }
+            }
+
+            _tail = GetNodeByIndex(Length - 1);
+        }
+
+
+
+        public int DeleteByValueFirst(int value)
+        {
+
+            Node crnt = _root;
+            int index = -1;
+
+            for(int i=0; i<Length;i++)
+            {
+                if(crnt.Value == value)
+                {
+                    index = i;
+
+                    DeleteByIndex(index);
+                    break;
+                        
+                }
+                crnt = crnt.Next;
+            }
+
+            return index;
+           
+        }
+
+
+        public int DeleteByValueAll(int value)
+        {
+
+            Node crnt = _root;
+            int count = 0;
+  
+            while(crnt!=null)
+            {
+                
+                if(crnt.Value == value)
+                {
+                    
+                    count++;
+
+                    int a = GetIndexByValue(value);
+                    DeleteByIndex(a);
+                }
+
+                crnt = crnt.Next;
+            }
+
+            
+            return count;
+
+        }
+
+
+        public void AddListToEnd(LinkedList newList)
+        {
+            if (newList._root == null || _root == null)
+            {
+                throw new NullReferenceException("newList._root == null");
+            }
+
+            _tail = GetNodeByIndex(Length - 1);
+            _tail.Next = newList._root;
+
+
+
+
+
+        }
+      
+
+
+
 
         public override string ToString()
         {
@@ -570,8 +734,36 @@ namespace Lists
             return true;
         }
 
+        private int GetIndexByValue (int value)
+        {
 
+            Node crnt = _root;
+            int index = -1;
+            for(int i = 0 ; i < Length; i++)
+            {
+                if(crnt.Value == value)
+                {
+                    
+                    index = i;
+                    break;
+                }
+                crnt = crnt.Next;
+            }
+            return index;
+        }
 
+        private Node GetNodeByIndex(int index)
+        {
+
+            Node crnt = _root;
+            for (int i = 1; i <= index; i++)
+            {
+                crnt = crnt.Next;
+            }
+
+            return crnt;
+
+        }
 
         public void WriteLinkedList()
         {

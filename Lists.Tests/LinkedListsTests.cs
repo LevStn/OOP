@@ -223,6 +223,18 @@ namespace Lists.Tests
 
 
 
+        [TestCaseSource(typeof(ReverseTestsSource))]
+        public void ReverseTests(LinkedList list, LinkedList expected)
+        {
+
+            LinkedList actualList = list;
+
+            list.Reverse();
+
+            Assert.AreEqual(expected, actualList);
+        }
+
+
         [TestCaseSource(typeof(FindValueMaxElementTestsSource))]
         public void FindValueMaxElementTests(LinkedList list, int expected)
         {
@@ -296,6 +308,84 @@ namespace Lists.Tests
         public void FindIndexManElement_WhenRootEqual0_ShouldThrowNullReferenceException(LinkedList list)
         {
             Assert.Throws<NullReferenceException>(() => list.FindIndexMaxElement());
+        }
+
+
+
+        [TestCaseSource(typeof(SortAscendingTestsSource))]
+        public void SortAscendingTests(LinkedList list, LinkedList expected)
+        {
+
+            LinkedList actualList = list;
+            list.SortAscending();
+
+            Assert.AreEqual(expected, actualList);
+
+        }
+
+
+
+        [TestCaseSource(typeof(SortDescendingTestsSource))]
+        public void SortDescendingTests(LinkedList list, LinkedList expected)
+        {
+
+            LinkedList actualList = list;
+            list.SortDescending();
+
+            Assert.AreEqual(expected, actualList);
+
+        }
+
+
+
+        [TestCaseSource(typeof(DeleteByValueFirstTestsSource))]
+        public void DeleteByValueFirstTests(int value, LinkedList list, LinkedList expectedList, int expectedValue)
+        {
+            int actualValue = list.DeleteByValueFirst(value);
+            LinkedList actualList = list;
+
+
+            Assert.AreEqual(expectedList, actualList);
+            Assert.AreEqual(expectedValue, actualValue);
+
+        }
+
+
+
+        [TestCaseSource(typeof(DeleteByValueAllTestsSource))]
+        public void DeleteByValueAllTests(int value, LinkedList list, LinkedList expectedList, int expectedCount)
+        {
+            int actualCount = list.DeleteByValueAll(value);
+            LinkedList actualList = list;
+
+
+            Assert.AreEqual(expectedList, actualList);
+            Assert.AreEqual(expectedCount, actualCount);
+
+        }
+
+
+        [TestCaseSource(typeof(AddListToEndTestsSource))]
+        public void AddListToEndTests(LinkedList list, LinkedList newList, LinkedList expected)
+        {
+
+
+            LinkedList actualList = list;
+
+            list.AddListToEnd(newList);
+
+            Assert.AreEqual(expected, actualList);
+
+
+        }
+        [TestCaseSource(typeof(NegativeAddListToEndTestsSource))]
+        public void AddListToEnd_WhenNewListOrListEqual0_ShouldThrowNullReferenceException(LinkedList list, LinkedList newList)
+        {
+
+
+            Assert.Throws<NullReferenceException>(() => list.AddListToEnd(newList)); ;
+
+
         }
     }   
 

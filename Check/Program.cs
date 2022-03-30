@@ -4,25 +4,21 @@
 
 LinkedList list = new LinkedList();
 
-list.AddToEnd(30);
-list.AddToEnd(2);
-
-list.AddToEnd(3);
-
-list.AddToEnd(4);
-
-list.AddToEnd(5);
 
 
+list.WriteLinkedList();
 
 
+LinkedList list2 = new LinkedList();
+
+list2.AddToBegin(2);
+list2.AddToBegin(2);
+list2.AddToBegin(2);
 
 
+list.AddListToEnd(list2);
+list2.WriteLinkedList();
+
+//list.AddListToEnd(list2);
 
 
-
-
-
-int a = list.FindIndexMinElement();
-
-Console.WriteLine(a);
