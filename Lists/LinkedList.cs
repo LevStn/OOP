@@ -146,6 +146,7 @@ namespace Lists
         }
 
 
+
         public void DeleteToEnd()
         {
 
@@ -170,6 +171,7 @@ namespace Lists
         }
 
 
+
         public void DeleteToBegin()
         {
             if(Length == 0)
@@ -186,6 +188,7 @@ namespace Lists
             }
 
         }
+
 
 
         public void DeleteByIndex(int index)
@@ -247,6 +250,7 @@ namespace Lists
             
 
         }
+
 
 
         public void DeleteToBeginNElements(int number)
@@ -322,7 +326,6 @@ namespace Lists
             
 
         }
-
 
 
 
@@ -576,7 +579,6 @@ namespace Lists
 
 
 
-
         public void SortDescending()
         {
 
@@ -641,6 +643,7 @@ namespace Lists
         }
 
 
+
         public int DeleteByValueAll(int value)
         {
 
@@ -668,6 +671,7 @@ namespace Lists
         }
 
 
+
         public void AddListToEnd(LinkedList newList)
         {
             if (newList._root == null || _root == null)
@@ -683,7 +687,76 @@ namespace Lists
 
 
         }
-      
+
+
+
+        public void AddListToBegin(LinkedList newList)
+        {
+            if (newList._root == null || _root == null)
+            {
+                throw new NullReferenceException("newList._root == null");
+            }
+
+            Node crnt = _root;
+            _root = newList._root;
+
+            newList._tail = GetNodeByIndex(Length- 1);
+            newList._tail.Next = crnt;
+
+        }
+
+
+
+        public void AddListToIndex(LinkedList newList, int index)
+        {
+            if ( index < 0 || index>Length)
+            {
+                throw new IndexOutOfRangeException(" index < 0 || index>Length");
+            }
+
+            if (newList._root == null || _root == null)
+            {
+                throw new NullReferenceException("newList._root == null || _root == null");
+            }
+
+            if(index == 0)
+            {
+
+                AddListToBegin(newList);
+            }
+            else if (index == Length)
+            {
+                AddListToEnd(newList);
+            }
+            else
+            {
+
+                Node tmp = _root;
+                Node crnt = newList._root;
+
+                for (int i = 0; i < index-1 ; i++)
+                {
+
+                    tmp = tmp.Next;
+
+                }
+
+                while(crnt.Next != null)
+                {
+                    crnt = crnt.Next;
+
+                }
+               
+
+                crnt.Next = tmp.Next;
+
+                tmp.Next = newList._root;
+
+            }
+
+            
+        }
+
 
 
 
@@ -764,6 +837,9 @@ namespace Lists
             return crnt;
 
         }
+
+
+
 
         public void WriteLinkedList()
         {

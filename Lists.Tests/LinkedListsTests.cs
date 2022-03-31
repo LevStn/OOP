@@ -387,6 +387,63 @@ namespace Lists.Tests
 
 
         }
+
+
+
+        [TestCaseSource(typeof(AddListToBeginTestsSource))]
+        public void AddListToBeginTests(LinkedList list, LinkedList newList, LinkedList expected)
+        {
+
+
+            LinkedList actualList = list;
+
+            list.AddListToBegin(newList);
+
+            Assert.AreEqual(expected, actualList);
+
+
+        }
+        [TestCaseSource(typeof(NegativeAddListToBeginTestsSource))]
+        public void AddListToBegin_WhenNewListOrListEqual0_ShouldThrowNullReferenceException(LinkedList list, LinkedList newList)
+        {
+
+            Assert.Throws<NullReferenceException>(() => list.AddListToBegin(newList)); ;
+
+        }
+
+
+        [TestCaseSource(typeof(AddListToIndexTestsSource))]
+        public void AddListToIndexTests( int index, LinkedList list, LinkedList newList, LinkedList expected)
+        {
+
+
+            LinkedList actualList = list;
+
+            list.AddListToIndex(newList, index);
+
+            Assert.AreEqual(expected, actualList);
+
+
+        }
+
+        [TestCaseSource(typeof(NegativeFirstAddListToBeginTestsSource))]
+        public void AddListToIndex_WhenNewIndexLess0OrMoreLength_ShouldThrowIndexOutOfRangeException(int index, LinkedList list, LinkedList newList)
+        {
+
+            Assert.Throws<IndexOutOfRangeException>(() => list.AddListToIndex(newList, index)); ;
+
+        }
+
+        [TestCaseSource(typeof(NegativeSecondAddListToBeginTestsSou))]
+        public void AddListToIndex_WhenNewNewListOrListEqualNull_ShouldThrowNullReferenceException(int index, LinkedList list, LinkedList newList)
+        {
+
+            Assert.Throws<NullReferenceException>(() => list.AddListToIndex(newList, index)); ;
+
+        }
+
+
+
     }   
 
 }
