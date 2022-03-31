@@ -4,23 +4,25 @@
 
 LinkedList list = new LinkedList();
 
-list.AddToBegin(23);
-list.AddToBegin(23);
-list.AddToBegin(23);
-
-list.WriteLinkedList();
-
+list.AddToEnd(55);
+list.AddToEnd(22);
+list.AddToEnd(66);
+list.AddToEnd(77);
+list.AddToEnd(88);
+list.AddToEnd(1);
+list.AddToEnd(2);
+list.AddToEnd(2);
+list.AddToEnd(3);
+list.AddToEnd(3);
+list.AddToEnd(3);
+list.AddToEnd(3);
 
 LinkedList list2 = new LinkedList();
+list2.AddToEnd(550000000);
 
-list2.AddToBegin(2);
-list2.AddToBegin(2);
-list2.AddToBegin(2);
+list.AddListToEnd(list2);
 
-
-list.AddListToIndex(list2,1);
+int a =list.FindFirstIndexByValue(5);
 list.WriteLinkedList();
 
-//list.AddListToEnd(list2);
-
-
+Console.WriteLine($"Result{a}");

@@ -365,7 +365,7 @@ namespace Lists
                 {
                     index = i;
 
-                   
+                    break;
                 }
 
                 crnt= crnt.Next;
@@ -424,7 +424,7 @@ namespace Lists
 
         }
 
-
+    
 
         public int FindValueMaxElement()
         {
@@ -658,7 +658,7 @@ namespace Lists
                     
                     count++;
 
-                    int a = GetIndexByValue(value);
+                    int a = FindFirstIndexByValue(value);
                     DeleteByIndex(a);
                 }
 
@@ -679,7 +679,7 @@ namespace Lists
                 throw new NullReferenceException("newList._root == null");
             }
 
-            _tail = GetNodeByIndex(Length - 1);
+            
             _tail.Next = newList._root;
 
 
