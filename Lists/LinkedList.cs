@@ -679,11 +679,10 @@ namespace Lists
                 throw new NullReferenceException("newList._root == null");
             }
 
+            LinkedList tmp = new LinkedList();
+            tmp = tmp.Copy(newList);
             
-            _tail.Next = newList._root;
-
-
-
+            _tail.Next = tmp._root;
 
 
         }
@@ -697,11 +696,14 @@ namespace Lists
                 throw new NullReferenceException("newList._root == null");
             }
 
-            Node crnt = _root;
-            _root = newList._root;
+            LinkedList tmp = new LinkedList();
+            tmp = tmp.Copy(newList);
 
-            newList._tail = GetNodeByIndex(Length- 1);
-            newList._tail.Next = crnt;
+            Node crnt = _root;
+            _root = tmp._root;
+
+            tmp._tail = GetNodeByIndex(Length- 1);
+            tmp._tail.Next = crnt;
 
         }
 
@@ -731,8 +733,11 @@ namespace Lists
             else
             {
 
+
                 Node tmp = _root;
                 Node crnt = newList._root;
+
+
 
                 for (int i = 0; i < index-1 ; i++)
                 {
@@ -838,6 +843,19 @@ namespace Lists
 
         }
 
+        private LinkedList Copy (LinkedList list)
+        {
+            Node crnt = list._root;
+            LinkedList tmpList = new LinkedList ();
+            for(int i = 0; i < list.Length; i++)
+            {
+
+                tmpList.AddToEnd(crnt.Value);
+                crnt = crnt.Next;
+            }
+
+            return tmpList;
+        }
 
 
 
